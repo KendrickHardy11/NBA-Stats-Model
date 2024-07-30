@@ -1,0 +1,20 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+raw_data1 = pd.read_csv('../nba-stats-csv/regular_season_box_scores_2010_2024_part_1.csv', header = 0)
+raw_data2 = pd.read_csv('../nba-stats-csv/regular_season_box_scores_2010_2024_part_2.csv', header = 0)
+raw_data3 = pd.read_csv('../nba-stats-csv/regular_season_box_scores_2010_2024_part_3.csv', header = 0)
+
+merged_raw_data = pd.concat([raw_data1, raw_data2, raw_data3])
+
+merged_raw_data.tail(10)
+
+list(merged_raw_data)
+
+cleaned_data = merged_raw_data.dropna(how='all')
+
+cleaned_data = cleaned_data[cleaned_data.season_year == '2023-24']
+
+cleaned_data.head(10)
